@@ -161,7 +161,8 @@ Python 3.10
 ## Resources & Documentation
 
 ### Source Code
-- **Existing Implementation:** `H:/GitHub/MPC-SERVERS/osp_marketing_tools-main/osp_marketing_tools-main/`
+- **GitHub Repository:** https://github.com/mionemedia/osp_marketing_tools
+- **Branch:** main
 - **Key Files:**
   - `src/osp_marketing_tools/server.py` - Current server implementation
   - `Dockerfile` - Current Docker setup
@@ -368,8 +369,9 @@ The existing code is 90% there - it just needs the transport layer fixed and pro
 ## Contact & Support
 
 **Project Owner:** User (Cascade session)
-**Source Repository:** Local at `H:/GitHub/MPC-SERVERS/osp_marketing_tools-main/`
+**GitHub Repository:** https://github.com/mionemedia/osp_marketing_tools
 **Original Authors:** Open Strategy Partners
+**Original Upstream:** https://github.com/open-strategy-partners/osp_marketing_tools
 **License:** Creative Commons Attribution-ShareAlike 4.0 International
 
 ---
@@ -384,7 +386,6 @@ The existing code is 90% there - it just needs the transport layer fixed and pro
 
 1. **Stage all changes:**
    ```bash
-   cd H:/GitHub/osp_marketing_tools
    git add .
    ```
 
@@ -411,7 +412,6 @@ The existing code is 90% there - it just needs the transport layer fixed and pro
 ### Target Repository
 - **GitHub URL:** https://github.com/mionemedia/osp_marketing_tools
 - **Branch:** main
-- **Local Path:** H:/GitHub/osp_marketing_tools
 
 ### Pre-Push Checklist
 Before committing and pushing, verify:
