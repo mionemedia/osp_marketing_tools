@@ -10,4 +10,4 @@ startCommand:
   commandFunction:
     # A function that produces the CLI command to start the MCP on stdio.
     |-
-    (config) => ({ command: 'python', args: ['src/osp_marketing_tools/server.py'] })
+    (config) => ({ command: 'python', args: ['src/osp_marketing_tools/server.py'], env: { MCP_TRANSPORT: 'stdio' } })

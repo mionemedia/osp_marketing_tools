@@ -62,7 +62,7 @@ async def get_writing_guide() -> dict:
     except FileNotFoundError:
         return {
             "success": False,
-            "error": "Required file 'writing-llm.md' not found in script directory"
+            "error": "Required file 'guide-llm.md' not found in script directory"
         }   
 
 @mcp.tool()
@@ -127,14 +127,19 @@ def main() -> None:
     """Run the MCP server."""
     transport = os.environ.get("MCP_TRANSPORT", "http")
     host = os.environ.get("MCP_HOST", "0.0.0.0")
-    port = int(os.environ.get("MCP_PORT", "8000"))
+    port_str = os.environ.get("MCP_PORT", "8000")
+    try:
+        port = int(port_str)
+    except ValueError:
+        logger.error("MCP_PORT must be an integer, got: %r", port_str)
+        raise SystemExit(1)
     try:
         if transport == "stdio":
             mcp.run(transport="stdio")
         else:
             mcp.run(transport="http", host=host, port=port)
     except Exception as e:
-        print(f"Error starting server: {str(e)}")
+        logger.error("Error starting server: %s", e)
         raise
 
 if __name__ == "__main__":

@@ -177,11 +177,11 @@ docker build -t osp-marketing-tools:http .
 # Run the container
 docker run -p 8000:8000 osp-marketing-tools:http
 
-# Verify the server is running
-curl http://localhost:8000/health
+# Verify the server is running (MCP endpoint — SSE stream, Ctrl+C to stop)
+curl -N -H "Accept: text/event-stream" http://localhost:8000/mcp
 
 # Test the MCP endpoint
-curl http://localhost:8000/mcp
+curl -N -H "Accept: text/event-stream" http://localhost:8000/mcp
 ```
 
 ### Environment Variables
