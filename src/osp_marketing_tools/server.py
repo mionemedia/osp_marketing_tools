@@ -125,8 +125,14 @@ async def get_on_page_seo_guide() -> dict:
 
 def main() -> None:
     """Run the MCP server."""
+    transport = os.environ.get("MCP_TRANSPORT", "http")
+    host = os.environ.get("MCP_HOST", "0.0.0.0")
+    port = int(os.environ.get("MCP_PORT", "8000"))
     try:
-        mcp.run()
+        if transport == "stdio":
+            mcp.run(transport="stdio")
+        else:
+            mcp.run(transport="http", host=host, port=port)
     except Exception as e:
         print(f"Error starting server: {str(e)}")
         raise

@@ -164,6 +164,63 @@ Add the following to your `claude_desktop_config.json`:
     }
 }
 ```
+## HTTP/SSE Transport (Docker / Network Clients)
+
+For network-based MCP clients (such as OpenClaw running in Docker), the server supports HTTP/SSE transport.
+
+### Build and Run with Docker
+
+```bash
+# Build the Docker image
+docker build -t osp-marketing-tools:http .
+
+# Run the container
+docker run -p 8000:8000 osp-marketing-tools:http
+
+# Verify the server is running
+curl http://localhost:8000/health
+
+# Test the MCP endpoint
+curl http://localhost:8000/mcp
+```
+
+### Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `MCP_TRANSPORT` | `http` | Transport mode: `http` or `stdio` |
+| `MCP_HOST` | `0.0.0.0` | Host to bind to |
+| `MCP_PORT` | `8000` | Port to listen on |
+
+### OpenClaw Integration
+
+Configure OpenClaw to connect to the server via HTTP:
+
+```json
+{
+  "mcp": {
+    "servers": {
+      "osp_marketing_tools": {
+        "url": "http://osp-marketing-tools:8000/mcp",
+        "transport": "http"
+      }
+    }
+  }
+}
+```
+
+### Docker Compose
+
+See `docker-compose.example.yml` for an example of running the server with Docker Compose alongside an MCP client.
+
+### Stdio Mode (Backward Compatibility)
+
+To use stdio transport (e.g., with Claude Desktop), set `MCP_TRANSPORT=stdio`:
+
+```bash
+docker run -e MCP_TRANSPORT=stdio osp-marketing-tools:http
+```
+
 ## Attribution
 
 This software package implements the content creation and optimization methodologies developed by [Open Strategy Partners](https://openstrategypartners.com). It is based on their LLM-enabled marketing tools and professional content creation frameworks.

@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  osp-marketing-tools:
+    image: osp-marketing-tools:http
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      MCP_HOST: "0.0.0.0"
+      MCP_PORT: "8000"
+      MCP_TRANSPORT: "http"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Example: OpenClaw or another MCP client connecting to the server
+  # openclaw:
+  #   image: openclaw:latest
+  #   environment:
+  #     MCP_SERVER_URL: "http://osp-marketing-tools:8000/mcp"
+  #   depends_on:
+  #     osp-marketing-tools:
+  #       condition: service_healthy
