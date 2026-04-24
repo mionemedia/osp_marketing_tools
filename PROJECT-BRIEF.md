@@ -371,3 +371,104 @@ The existing code is 90% there - it just needs the transport layer fixed and pro
 **Source Repository:** Local at `H:/GitHub/MPC-SERVERS/osp_marketing_tools-main/`
 **Original Authors:** Open Strategy Partners
 **License:** Creative Commons Attribution-ShareAlike 4.0 International
+
+---
+
+## Deployment Instructions for Archon
+
+### When Project is Complete
+
+**IMPORTANT:** After successfully completing the rebuild and verifying all tests pass, automatically commit and push your changes to GitHub.
+
+### Auto-Commit Workflow
+
+1. **Stage all changes:**
+   ```bash
+   cd H:/GitHub/osp_marketing_tools
+   git add .
+   ```
+
+2. **Commit with descriptive message:**
+   ```bash
+   git commit -m "feat: Add HTTP/SSE transport support for network-based MCP clients
+
+   - Modified server.py to support HTTP transport
+   - Updated Dockerfile for standalone HTTP service
+   - Added environment variable configuration
+   - Preserved backward compatibility with stdio
+   - All 6 tools tested and working
+   - Docker deployment verified
+   - OpenClaw integration tested
+
+   Closes: HTTP/SSE rebuild project"
+   ```
+
+3. **Push to GitHub:**
+   ```bash
+   git push origin main
+   ```
+
+### Target Repository
+- **GitHub URL:** https://github.com/mionemedia/osp_marketing_tools
+- **Branch:** main
+- **Local Path:** H:/GitHub/osp_marketing_tools
+
+### Pre-Push Checklist
+Before committing and pushing, verify:
+- ✅ All 6 tools functional via HTTP
+- ✅ Docker image builds successfully
+- ✅ Container runs and stays healthy
+- ✅ Health check endpoint responds
+- ✅ OpenClaw can connect (if possible to test)
+- ✅ Documentation updated
+- ✅ No hardcoded secrets or credentials
+
+### Commit Message Format
+Use conventional commits format:
+- `feat:` for new features (HTTP transport)
+- `fix:` for bug fixes
+- `docs:` for documentation
+- `test:` for testing changes
+- `chore:` for maintenance
+
+### Files to Commit
+Expected modified/new files:
+- `src/osp_marketing_tools/server.py` (modified)
+- `Dockerfile` (modified)
+- `README.md` (updated with HTTP instructions)
+- `docker-compose.example.yml` (new, if created)
+- Any new test files
+- This PROJECT-BRIEF.md (can be kept or removed)
+
+**DO NOT COMMIT:**
+- `.env` files with secrets
+- `__pycache__/` directories
+- `.venv/` or virtual environments
+- Personal API keys or tokens
+- Temporary test files
+
+---
+
+## Success Report Template
+
+After pushing to GitHub, provide a summary report:
+
+```markdown
+## OSP Marketing Tools HTTP/SSE Rebuild - COMPLETE ✅
+
+### Changes Made
+- [List key modifications]
+
+### Testing Results
+- ✅ All 6 tools functional
+- ✅ Docker build: SUCCESS
+- ✅ Container health: HEALTHY
+- ✅ OpenClaw integration: [STATUS]
+
+### Repository
+- Committed: [commit hash]
+- Pushed to: https://github.com/mionemedia/osp_marketing_tools
+
+### Next Steps
+[Any recommendations or follow-up items]
+```
